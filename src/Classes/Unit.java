@@ -1,26 +1,53 @@
 
 package Classes;
 
+import java.util.ArrayList;
+import org.newdawn.slick.*;
+import org.newdawn.slick.geom.*;
+
 abstract public class Unit {
     static int units;
-    protected int health, armour, atkdamage, rank, upgradecost, cost;
+    protected String enemytype;
+    protected int health, maxhealth, armour, atkdamage, rank, upgradecost, cost, x, y;
     protected int  m1,m2,m3;
     protected boolean m1rule, m2rule, m3rule;
     protected String name, type;
-    public Unit(int r, String n){
-        rank = r;
+    protected Rectangle hitbox;
+    protected Image image;
+    public Unit(int r, String n,int xpos, int ypos) throws SlickException {
         name = n;
+        x= xpos;
+        y = ypos;
+        setrank(r);
+        hitbox = new Rectangle(x, y, image.getWidth(), image.getHeight());
+        
+        
+     }
+    public Unit(int r, String n) throws SlickException {
+        name = n;
+        setrank(r);
+        hitbox = new Rectangle(x, y, image.getWidth(), image.getHeight());
         
      }
     
     
-    abstract void rank1();
-    abstract void rank2();
-    abstract void rank3();
-    abstract void rank4();
-    abstract void rank5();
+    abstract public void rank1();
+    abstract public void rank2();
+    abstract public void rank3();
+    abstract public void rank4();
+    abstract public void rank5();
     public void uprank(){
         rank++;
+        if(rank ==1)rank1();
+        if(rank ==2)rank2();
+        if(rank ==3)rank3();
+        if(rank ==4)rank4();
+        if(rank ==5)rank5();
+        
+        
+    }
+    public void setrank(int r){
+        rank = r;
         if(rank ==1)rank1();
         if(rank ==2)rank2();
         if(rank ==3)rank3();
@@ -41,8 +68,17 @@ abstract public class Unit {
     public void takedamage(int ed){
         health -=(ed-armour);
     }
+    public void setx(int xpos){
+        x = xpos;
+        hitbox.setX(x);
+    }
+    public void sety(int ypos){
+        y = ypos;
+        hitbox.setY(y);
+    }
     public int dodamage(int ed, String etype){
         int damage;
+        enemytype = etype;
         damage = atkdamage;
         if (m1rule) {
             damage += m1;
@@ -56,8 +92,11 @@ abstract public class Unit {
         return damage;
         
     }
+    public void draw(){
+        image.draw(x,y);}
     public int defensedamage(int ed, String etype){
         int damage;
+        enemytype = etype;
         damage = atkdamage;
         if (m1rule) {
             damage += m1;
@@ -75,32 +114,35 @@ abstract public class Unit {
     *   ^
         |
     */  
-     /* Damage   Methods
-    *   ^
-        |
-    */  
+   
     
     
    
-    public int gethealth(){
+    final public int gethealth(){
         return health;
     }
-    public int getarmour(){
+    final public int getx(){
+        return x;
+    }
+    final public int gety(){
+        return y;
+    }
+    final public int getarmour(){
         return armour;
     }
-    public int getrank(){
+    final public int getrank(){
         return rank;
     }
-    public int getupgradecost(){
+    final public int getupgradecost(){
         return upgradecost;
     }
-    public int getcost(){
+    final public int getcost(){
         return cost;
     }
-    public String getname(){
+    final public String getname(){
         return name;
     }
-    public String gettype(){
+    final public String gettype(){
         return type;
     }
      /* Getter Methods
