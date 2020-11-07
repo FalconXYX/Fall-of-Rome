@@ -16,9 +16,10 @@ public class Spearman extends Unit {
         m3 = 0;
         m1rule = enemytype == "Cavalry";
         m2rule = enemytype == "Melee";
+        m3rule = enemytype == "Melee";
         
        
-        type = "Swordsman";
+        type = "Melee";
         image = new Image("src\\Images\\Spearman.PNG");
         
                 

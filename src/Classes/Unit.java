@@ -76,9 +76,9 @@ abstract public class Unit {
         y = ypos;
         hitbox.setY(y);
     }
-    public int dodamage(int ed, String etype){
+    public int dodamage(int ed,Unit enemy){
         int damage;
-        enemytype = etype;
+        enemytype = enemy.gettype();
         damage = atkdamage;
         if (m1rule) {
             damage += m1;
@@ -94,9 +94,9 @@ abstract public class Unit {
     }
     public void draw(){
         image.draw(x,y);}
-    public int defensedamage(int ed, String etype){
+    public int defensedamage(int ed, Unit enemy){
         int damage;
-        enemytype = etype;
+        enemytype = enemy.gettype();
         damage = atkdamage;
         if (m1rule) {
             damage += m1;
@@ -106,6 +106,9 @@ abstract public class Unit {
         }
         if (m1rule) {
             damage += m3;
+        }
+        if (enemytype.equals("ranged")) {
+            damage = 0;
         }
         return Math.round(damage/2);
         
