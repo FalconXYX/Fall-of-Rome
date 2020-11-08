@@ -1,5 +1,5 @@
 
-package Classes;
+package UnitClasses;
 
 import java.util.ArrayList;
 import org.newdawn.slick.*;

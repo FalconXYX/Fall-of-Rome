@@ -1,5 +1,5 @@
 
-package Classes;
+package UnitClasses;
 
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
@@ -14,7 +14,7 @@ public class Cavalry extends Unit {
         m1 = 3;
         m2 = 0;
         m3 = 0;
-        m1rule = enemytype == "Ranged";  
+        m1rule = enemytype.equals("Ranged"); 
         m2rule = false;
         m3rule = false;
         type = "Cavalry";
@@ -29,7 +29,7 @@ public class Cavalry extends Unit {
         m1 = 3;
         m2 = 0;
         m3 = 0;
-        m1rule = enemytype == "Ranged";
+        m1rule = enemytype.equals("Ranged");
         m2rule = false;
         m3rule = false;
         type = "Cavalry";
