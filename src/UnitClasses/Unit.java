@@ -14,6 +14,7 @@ abstract public class Unit {
     protected String name, type;
     protected Rectangle hitbox;
     protected Image image;
+    
     public Unit(int r, String n,int xpos, int ypos) throws SlickException {
         name = n;
         x= xpos;
