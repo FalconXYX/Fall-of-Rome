@@ -7,7 +7,7 @@ import org.newdawn.slick.Input;
 public class StartButton extends Button{
     Input i;
     public StartButton(Input in, Image img){
-        super(img,"Start",540, 250);
+        super(img,"Start",500, 250);
         i = in;
     
     

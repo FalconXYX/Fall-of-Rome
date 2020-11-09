@@ -10,7 +10,7 @@ public class Launcher extends StateBasedGame {
     
     public static int gold=500;
     public static ArrayList<Unit> units = new ArrayList();
-    public static int level;
+    public static int level = 1;
 
     public Launcher(String title) {
         super(title);
@@ -19,6 +19,7 @@ public class Launcher extends StateBasedGame {
     public void initStatesList(GameContainer gc) throws SlickException {
         this.addState(new StartScreen());
         this.addState(new Instuctions());
+        this.addState(new Shop());
         
        
     }

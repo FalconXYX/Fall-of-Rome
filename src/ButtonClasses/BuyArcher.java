@@ -2,6 +2,7 @@
 package ButtonClasses;
 
 
+import States.Launcher;
 import UnitClasses.Archer;
 
 import UnitClasses.Unit;
@@ -11,7 +12,7 @@ import org.newdawn.slick.Input;
 public class BuyArcher extends Button{
     Input i;
     public BuyArcher(Input in, Image img){
-        super(img,"BuySword",540, 250);
+        super(img,"BuyArcher",540, 250);
         i = in;
     
     
@@ -21,11 +22,12 @@ public class BuyArcher extends Button{
     
 
     
-    public boolean function(int mx, int my, int gold, int s, ArrayList<Unit> list) throws SlickException {
+    public boolean function(int mx, int my, int s) throws SlickException {
         Archer temp = new Archer("Bob", 1);
         if (super.hit(mx, my,i)) {
-            if(s <= 5 && gold >= temp.getupgradecost()){
-                list.add(temp);
+            if(s <= 5 && Launcher.gold >= temp.getupgradecost()){
+                Launcher.units.add(temp);
+                Launcher.gold -= temp.getupgradecost();
                 return true;
                 
                 

@@ -4,7 +4,7 @@ package States;
 
 
 import ButtonClasses.*;
-import ButtonClasses.StartButton;
+import ButtonClasses.NextButton;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -16,9 +16,14 @@ import org.newdawn.slick.state.transition.*;
 
 public class Shop extends BasicGameState {
     Input in;
-    Button sword, archer, spear, catapult, cavalry;
-    Image swordimg, archerimg,spearimg;
-    Image startimg;
+    BuySwordsman sword; 
+    BuyArcher archer;
+    BuySpearman spear;
+    BuyCavalry cavalry;
+    BuyCatapult catapult; 
+    NextButton next;
+    Image swordimg, archerimg,spearimg, cavalryimg, catapultimg, nextimg;
+    
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         in = gc.getInput();
         swordimg = new Image("src/Images/start.png");
@@ -30,27 +35,35 @@ public class Shop extends BasicGameState {
         spearimg = new Image("src/Images/start.png");
         spear = new BuySpearman(in, spearimg);
         
-        swordimg = new Image("src/Images/start.png");
-        sword = new BuySwordsman(in, startimg);
+        cavalryimg = new Image("src/Images/start.png");
+        cavalry = new BuyCavalry(in, cavalryimg);
         
-        swordimg = new Image("src/Images/start.png");
-        sword = new BuySwordsman(in, startimg);
+        catapultimg = new Image("src/Images/start.png");
+        catapult = new BuyCatapult(in, catapultimg);
 
-        
+        nextimg = new Image("src/Images/Next.png");
+        next = new NextButton(in, nextimg);
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException { 
         int mx = in.getMouseX();
         int my = in.getMouseY();
-        if (start.function(mx, my)) {
+        if (next.function(mx, my)) {
             sbg.enterState(1, new FadeOutTransition(), new FadeInTransition());
         }
         
     }
 
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-       img.draw(0, 0);
-       start.draw(g);
+       next.draw(g);
+       archer.draw(g);
+       catapult.draw(g);
+       spear.draw(g);
+       sword.draw(g);
+       next.draw(g);
+       cavalry.draw(g);
+       
+       
     }
     
     public int getID() {
