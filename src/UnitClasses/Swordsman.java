@@ -19,7 +19,7 @@ public class Swordsman extends Unit {
         m3rule = health <= (maxhealth*0.33);
         type = "Melee";
         image = new Image("src\\Images\\Swordsman.PNG");
-        
+        hitbox = new Rectangle(x, y, image.getWidth(), image.getHeight());
                 
     
     

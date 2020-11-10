@@ -12,7 +12,7 @@ import org.newdawn.slick.Input;
 public class BuySpearman extends Button{
     Input i;
     public BuySpearman(Input in, Image img){
-        super(img,"BuySwordsman",540, 250);
+        super(img,"BuySwordsman",940, 250);
         i = in;
     
     
@@ -23,7 +23,7 @@ public class BuySpearman extends Button{
 
     
     public boolean function(int mx, int my, int s) throws SlickException {
-        Spearman temp = new Spearman("Bob", 1);
+        Spearman temp = new Spearman("Bob", 1,0,0);
         if (super.hit(mx, my,i)) {
             if(s <= 5 && Launcher.gold >= temp.getupgradecost()){
                 Launcher.units.add(temp);

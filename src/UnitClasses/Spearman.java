@@ -21,7 +21,7 @@ public class Spearman extends Unit {
        
         type = "Melee";
         image = new Image("src\\Images\\Spearman.PNG");
-        
+        hitbox = new Rectangle(x, y, image.getWidth(), image.getHeight());
                 
     
     

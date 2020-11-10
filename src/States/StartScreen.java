@@ -22,7 +22,7 @@ public class StartScreen extends BasicGameState {
         in = gc.getInput();
         startimg = new Image("src/Images/start.png");
         start = new StartButton(in, startimg);
-        img = new Image("src/Images/rome.jpg");
+        img = new Image("src/Images/rome.png");
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException { 

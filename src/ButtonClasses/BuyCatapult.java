@@ -23,7 +23,7 @@ public class BuyCatapult extends Button{
 
     
     public boolean function(int mx, int my, int s) throws SlickException {
-        Catapult temp = new Catapult("Bob", 1);
+        Catapult temp = new Catapult("Bob", 1,0,0);
         if (super.hit(mx, my,i)) {
             if(s <= 5 && Launcher.gold >= temp.getupgradecost()){
                 Launcher.units.add(temp);

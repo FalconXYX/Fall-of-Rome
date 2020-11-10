@@ -8,26 +8,28 @@ import org.newdawn.slick.geom.*;
 abstract public class Unit {
     static int units;
     protected String enemytype;
-    protected int health, maxhealth, armour, atkdamage, rank, upgradecost, cost, x, y;
+    protected int health, maxhealth, armour, atkdamage, rank, upgradecost, cost, x, y, target;
     protected int  m1,m2,m3;
     protected boolean m1rule, m2rule, m3rule;
     protected String name, type;
     protected Rectangle hitbox;
     protected Image image;
+    protected Color color;
     
     public Unit(int r, String n,int xpos, int ypos) throws SlickException {
         name = n;
         x= xpos;
         y = ypos;
         setrank(r);
-        hitbox = new Rectangle(x, y, image.getWidth(), image.getHeight());
+        color = Color.black;
+       
         
         
      }
     public Unit(int r, String n) throws SlickException {
         name = n;
         setrank(r);
-        hitbox = new Rectangle(x, y, image.getWidth(), image.getHeight());
+          color = Color.black;
         
      }
     
@@ -65,7 +67,9 @@ abstract public class Unit {
     
     
     
-    
+    final public void settarget(int t){
+        target = t;
+    }
     public void takedamage(int ed){
         health -=(ed-armour);
     }
@@ -77,7 +81,7 @@ abstract public class Unit {
         y = ypos;
         hitbox.setY(y);
     }
-    public int dodamage(int ed,Unit enemy){
+    public int dodamage(Unit enemy){
         int damage;
         enemytype = enemy.gettype();
         damage = atkdamage;
@@ -93,9 +97,18 @@ abstract public class Unit {
         return damage;
         
     }
-    public void draw(){
-        image.draw(x,y);}
-    public int defensedamage(int ed, Unit enemy){
+    public void draw(Graphics g){
+        image.draw(x,y);
+        g.setColor(color);
+        //g.draw(hitbox);
+        
+        }
+    public void setcolor(Color g){   
+        color = g;
+ 
+        
+        }
+    public int defensedamage( Unit enemy){
         int damage;
         enemytype = enemy.gettype();
         damage = atkdamage;
@@ -124,6 +137,9 @@ abstract public class Unit {
    
     final public int gethealth(){
         return health;
+    }
+    final public int gettarget(){
+        return target;
     }
     final public int getx(){
         return x;

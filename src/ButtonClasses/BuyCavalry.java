@@ -12,7 +12,7 @@ import org.newdawn.slick.Input;
 public class BuyCavalry extends Button{
     Input i;
     public BuyCavalry(Input in, Image img){
-        super(img,"BuyCavalry",540, 250);
+        super(img,"BuyCavalry",340, 250);
         i = in;
     
     
@@ -23,7 +23,7 @@ public class BuyCavalry extends Button{
 
     
     public boolean function(int mx, int my, int s) throws SlickException {
-        Cavalry temp = new Cavalry("Bob", 1);
+        Cavalry temp = new Cavalry("Bob", 1,0,0);
         if (super.hit(mx, my,i)) {
             if(s <= 5 && Launcher.gold >= temp.getupgradecost()){
                 Launcher.units.add(temp);

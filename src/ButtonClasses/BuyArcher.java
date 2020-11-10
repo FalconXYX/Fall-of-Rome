@@ -12,7 +12,7 @@ import org.newdawn.slick.Input;
 public class BuyArcher extends Button{
     Input i;
     public BuyArcher(Input in, Image img){
-        super(img,"BuyArcher",540, 250);
+        super(img,"BuyArcher",110, 250);
         i = in;
     
     
@@ -23,7 +23,7 @@ public class BuyArcher extends Button{
 
     
     public boolean function(int mx, int my, int s) throws SlickException {
-        Archer temp = new Archer("Bob", 1);
+        Archer temp = new Archer("Bob", 1, 0, 0);
         if (super.hit(mx, my,i)) {
             if(s <= 5 && Launcher.gold >= temp.getupgradecost()){
                 Launcher.units.add(temp);

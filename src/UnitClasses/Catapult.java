@@ -19,7 +19,7 @@ public class Catapult extends Unit {
         m3rule = health <= (maxhealth*0.33);
         type = "Ranged";
         image = new Image("src\\Images\\Catapult.PNG");
-        
+        hitbox = new Rectangle(x, y, image.getWidth(), image.getHeight());
                 
     
     

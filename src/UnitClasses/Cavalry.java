@@ -19,7 +19,7 @@ public class Cavalry extends Unit {
         m3rule = false;
         type = "Cavalry";
         image = new Image("src\\Images\\Cavalry.PNG");
-        
+        hitbox = new Rectangle(x, y, image.getWidth(), image.getHeight());
                 
     
     

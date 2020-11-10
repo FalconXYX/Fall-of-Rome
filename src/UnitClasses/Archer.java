@@ -19,6 +19,7 @@ public class Archer extends Unit{
         m1rule = armour > 16;
         type = "Ranged";
         image = new Image("src\\Images\\Archer.PNG");
+        hitbox = new Rectangle(x, y, image.getWidth(), image.getHeight());
         
                 
     

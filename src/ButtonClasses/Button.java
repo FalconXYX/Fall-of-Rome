@@ -12,7 +12,7 @@ abstract public class Button {
     protected Graphics g;
     protected Shape box;
     protected String name, type;
-    protected Rectangle hitbox;
+    public Rectangle hitbox;
     protected Rectangle buttonshape;
     protected int x, y, w, l;
 
