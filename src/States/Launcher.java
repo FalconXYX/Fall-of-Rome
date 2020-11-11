@@ -9,6 +9,7 @@ import org.newdawn.slick.state.StateBasedGame;
 public class Launcher extends StateBasedGame {
     
     public static int gold=500;
+    public static boolean isinstuctions=false;
     public static ArrayList<Unit> units = new ArrayList();
     public static int level = 1;
 

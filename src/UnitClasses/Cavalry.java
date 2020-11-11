@@ -14,7 +14,7 @@ public class Cavalry extends Unit {
         m1 = 3;
         m2 = 0;
         m3 = 0;
-        m1rule = enemytype.equals("Ranged"); 
+        m1rule = false;//enemytype.equals("Ranged"); 
         m2rule = false;
         m3rule = false;
         type = "Cavalry";
@@ -29,11 +29,11 @@ public class Cavalry extends Unit {
         m1 = 3;
         m2 = 0;
         m3 = 0;
-        m1rule = enemytype.equals("Ranged");
+        m1rule = false;//enemytype.equals("Ranged");
         m2rule = false;
         m3rule = false;
         type = "Cavalry";
-        image = new Image("src\\Images\\Cavalry.PNG");
+        image = new Image("src\\Images\\Horseman.PNG");
         hitbox = new Rectangle(x, y, image.getWidth(), image.getHeight());
    
     
@@ -42,7 +42,7 @@ public class Cavalry extends Unit {
 
     @Override
     public void rank1() {
-        health = 1300;
+        health = 130;
         armour = 5;
         atkdamage  = 15;
         upgradecost = 120;

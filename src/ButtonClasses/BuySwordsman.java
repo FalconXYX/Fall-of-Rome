@@ -23,7 +23,7 @@ public class BuySwordsman extends Button{
     public boolean function(int mx, int my, int s) throws SlickException {
         Swordsman temp = new Swordsman("Bob", 1,0,0);
         if (super.hit(mx, my,i)) {
-            if(s <= 5 && Launcher.gold >= temp.getupgradecost()){
+            if(s <= 4 && Launcher.gold >= temp.getupgradecost()){
                 Launcher.units.add(temp);
                 Launcher.gold -= temp.getupgradecost();
                 return true;

@@ -25,7 +25,7 @@ public class BuySpearman extends Button{
     public boolean function(int mx, int my, int s) throws SlickException {
         Spearman temp = new Spearman("Bob", 1,0,0);
         if (super.hit(mx, my,i)) {
-            if(s <= 5 && Launcher.gold >= temp.getupgradecost()){
+            if(s <= 4 && Launcher.gold >= temp.getupgradecost()){
                 Launcher.units.add(temp);
                 Launcher.gold -= temp.getupgradecost();
                 return true;

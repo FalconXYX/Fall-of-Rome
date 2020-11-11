@@ -59,8 +59,8 @@ public class Shop extends BasicGameState {
         
         if (sword.function(mx, my, Launcher.units.size())) {
             try {
-                TimeUnit.MILLISECONDS.sleep(30);
-                return;
+                TimeUnit.MILLISECONDS.sleep(150);
+                
             } catch (InterruptedException ex) {
                 //
             }
@@ -68,24 +68,25 @@ public class Shop extends BasicGameState {
         if (spear.function(mx, my, Launcher.units.size())) {
             try {
                 
-                TimeUnit.MILLISECONDS.sleep(30);
-                return;
+                TimeUnit.MILLISECONDS.sleep(150);
+                
             } catch (InterruptedException ex) {
                 //
             }
         }
         if (archer.function(mx, my, Launcher.units.size())) {
             try {
-                TimeUnit.MILLISECONDS.sleep(30);
-                return;
+                TimeUnit.MILLISECONDS.sleep(150);
+                
             } catch (InterruptedException ex) {
                 //
             }
         }
+        
         if (cavalry.function(mx, my, Launcher.units.size())) {
             try {
-                TimeUnit.MILLISECONDS.sleep(30);
-                return;
+                TimeUnit.MILLISECONDS.sleep(150);
+                
                 
             } catch (InterruptedException ex) {
                 //
@@ -93,8 +94,8 @@ public class Shop extends BasicGameState {
         }
         if (catapult.function(mx, my, Launcher.units.size())) {
             try {
-               TimeUnit.MILLISECONDS.sleep(30);
-               return;
+               TimeUnit.MILLISECONDS.sleep(150);
+               
                
             } catch (InterruptedException ex) {
                 //
@@ -102,13 +103,22 @@ public class Shop extends BasicGameState {
         }
         
         if (next.function(mx, my)) {
-            sbg.enterState(Launcher.level+2, new FadeOutTransition(), new FadeInTransition());
+            if(Launcher.units.size()  != 5){
+                while(Launcher.units.size()  != 5){
+                Launcher.units.add(Launcher.units.size(), null);
+                }   
+            }
+            if (Launcher.isinstuctions) {
+                sbg.enterState(3, new FadeOutTransition(), new FadeInTransition());
+            }
+            else{sbg.enterState(3+Launcher.level, new FadeOutTransition(), new FadeInTransition());}
         }
         
     }
 
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-        shopback.draw(0, 0);
+       
+       shopback.draw(0, 0);
        next.draw(g);
        archer.draw(g);
        catapult.draw(g);
