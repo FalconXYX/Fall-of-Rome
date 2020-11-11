@@ -94,6 +94,7 @@ public class Level1 extends BasicGameState {
             if (u != null) {
             if (u.gethealth() <= 0) {
                     enemyunits.set(enemyunits.indexOf(u), null);
+                    Launcher.gold+=50;
                 }}
             
         }
@@ -289,10 +290,11 @@ public class Level1 extends BasicGameState {
     }
 
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-        g.setColor(Color.white);
-        g.drawString("" + Launcher.gold, 35, 13);
+        
         back.draw(0, 1);
         goldimg.draw(80, 13);
+        g.setColor(Color.white);
+        g.drawString("" + Launcher.gold, 35, 13);
         for (int i = 0; i < 5; i++) {
             Unit u = Launcher.units.get(i);
             if (u != null) {

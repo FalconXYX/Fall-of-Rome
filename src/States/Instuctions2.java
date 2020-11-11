@@ -41,7 +41,7 @@ public class Instuctions2 extends BasicGameState {
     }
     
     public int getID() {
-       return 1;  //this id will be different for each screen
+       return 3;  //this id will be different for each screen
     }
 
     

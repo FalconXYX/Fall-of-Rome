@@ -8,6 +8,7 @@ import ButtonClasses.NextButton;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -103,12 +104,16 @@ public class Shop extends BasicGameState {
         }
         
         if (next.function(mx, my)) {
+            if (Launcher.units.size()  == 0) {
+                JOptionPane.showMessageDialog(null, "Please Buy at Least one unit");
+                return;
+            }
             if(Launcher.units.size()  != 5){
                 while(Launcher.units.size()  != 5){
                 Launcher.units.add(Launcher.units.size(), null);
                 }   
             }
-            if (Launcher.isinstuctions) {
+            if (Launcher.isinstuctions==false) {
                 sbg.enterState(3, new FadeOutTransition(), new FadeInTransition());
             }
             else{sbg.enterState(3+Launcher.level, new FadeOutTransition(), new FadeInTransition());}
