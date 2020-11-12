@@ -5,6 +5,7 @@ package States;
 
 import ButtonClasses.*;
 import ButtonClasses.NextButton;
+import UnitClasses.Unit;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,6 +32,7 @@ public class Shop extends BasicGameState {
     Image swordimg, archerimg,spearimg, cavalryimg, catapultimg, nextimg, goldimg, shopback;
     
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
+        
         in = gc.getInput();
         shopback = new Image("src/Images/shop.png");
         swordimg = new Image("src/Images/swordbuy.png");
@@ -57,7 +59,17 @@ public class Shop extends BasicGameState {
     public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException { 
         int mx = in.getMouseX();
         int my = in.getMouseY();
-        
+        for (Unit u:Launcher.units) {
+            
+           
+            if(u == null){
+                    Launcher.units.remove(u);
+                    break;
+                
+                
+                }
+            
+            }
         if (sword.function(mx, my, Launcher.units.size())) {
             try {
                 TimeUnit.MILLISECONDS.sleep(150);

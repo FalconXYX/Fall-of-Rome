@@ -42,7 +42,8 @@ public class Catapult extends Unit {
 
     @Override
     public void rank1() {
-        health = 50;
+        health = 40;
+        maxhealth = 40;
         armour = 0;
         atkdamage  = 20;
         upgradecost = 100;
@@ -53,7 +54,8 @@ public class Catapult extends Unit {
 
     @Override
     public void rank2() {
-        health = 70;
+        maxhealth = 60;
+        health = maxhealth;
         armour = 0;
         atkdamage  = 23;
         upgradecost = 150;
@@ -62,7 +64,8 @@ public class Catapult extends Unit {
 
     @Override
     public void rank3() {
-        health = 90;
+        maxhealth = 70;
+        health = maxhealth;
         armour = 0;
         atkdamage  = 28;
         upgradecost = 200;
@@ -71,7 +74,8 @@ public class Catapult extends Unit {
 
     @Override
     public void rank4() {
-        health = 110;
+        maxhealth = 80;
+        health = maxhealth;
         armour = 0;
         atkdamage  = 32;
         upgradecost = 250;
@@ -80,7 +84,8 @@ public class Catapult extends Unit {
 
     @Override
     public void rank5() {
-        health = 125;
+        maxhealth = 115;
+        health = maxhealth;
         armour = 0;
         atkdamage  = 35;
         upgradecost = 300;

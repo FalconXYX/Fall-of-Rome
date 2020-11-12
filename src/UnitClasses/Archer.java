@@ -44,6 +44,7 @@ public class Archer extends Unit{
     @Override
    public void rank1() {
         health = 70;
+        maxhealth = 70;
         armour = 0;
         atkdamage  = 15;
         upgradecost = 90;
@@ -54,8 +55,9 @@ public class Archer extends Unit{
 
     @Override
     public void rank2() {
-        health = 90;
+        maxhealth = 90;
         armour = 2;
+        health = maxhealth;
         atkdamage  = 23;
         upgradecost = 130;
         cost = 5;
@@ -63,8 +65,9 @@ public class Archer extends Unit{
 
     @Override
     public void rank3() {
-        health = 110;
+        maxhealth = 110;
         armour = 4;
+        health = maxhealth;
         atkdamage  = 28;
         upgradecost = 180;
         cost = 6;       
@@ -72,8 +75,9 @@ public class Archer extends Unit{
 
     @Override
     public void rank4() {
-        health = 130;
+        maxhealth = 130;
         armour = 6;
+        health = maxhealth;
         atkdamage  = 30;
         upgradecost = 210;
         cost = 7;       
@@ -81,8 +85,9 @@ public class Archer extends Unit{
 
     @Override
     public void rank5() {
-        health = 150;
+        maxhealth = 150;
         armour = 8;
+        health = maxhealth;
         atkdamage  = 33;
         upgradecost = 250;
         cost = 8;        

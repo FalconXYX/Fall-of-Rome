@@ -43,7 +43,8 @@ public class Spearman extends Unit {
 
     @Override
     public void rank1() {
-        health = 80;
+        maxhealth = 80;
+        health=80;
         armour = 4;
         atkdamage  = 12;
         upgradecost = 80;
@@ -54,8 +55,9 @@ public class Spearman extends Unit {
 
     @Override
     public void rank2() {
-        health = 90;
-        armour = 6;
+        maxhealth = 90;
+        health = maxhealth;
+        armour = 5;
         atkdamage  = 18;
         upgradecost = 130;
         cost = 5;
@@ -63,7 +65,8 @@ public class Spearman extends Unit {
 
     @Override
     public void rank3() {
-        health = 110;
+        maxhealth = 110;
+        health = maxhealth;
         armour = 8;
         atkdamage  = 21;
         upgradecost = 180;
@@ -72,7 +75,8 @@ public class Spearman extends Unit {
 
     @Override
     public void rank4() {
-        health = 150;
+        maxhealth = 130;
+        health = maxhealth;
         armour = 10;
         atkdamage  = 25;
         upgradecost = 210;
@@ -81,7 +85,8 @@ public class Spearman extends Unit {
 
     @Override
     public void rank5() {
-        health = 180;
+        maxhealth = 150;
+        health = maxhealth;
         armour = 12;
         atkdamage  = 28;
         upgradecost = 250;

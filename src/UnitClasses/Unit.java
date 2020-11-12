@@ -8,13 +8,15 @@ import org.newdawn.slick.geom.*;
 abstract public class Unit {
     static int units;
     protected String enemytype;
-    protected int health, maxhealth, armour, atkdamage, rank, upgradecost, cost, x, y, target;
+    protected double percent;
+    protected int health, maxhealth, armour, atkdamage, rank, upgradecost, cost, x, y, target, wgreen;
     protected int  m1,m2,m3;
     protected boolean m1rule, m2rule, m3rule;
     protected String name, type;
-    protected Rectangle hitbox;
+    protected Rectangle hitbox, blackrect, redrect, greenrect;
     protected Image image;
     protected Color color;
+    protected HealthBar h;
     
     public Unit(int r, String n,int xpos, int ypos) throws SlickException {
         name = n;
@@ -22,14 +24,19 @@ abstract public class Unit {
         y = ypos;
         setrank(r);
         color = Color.black;
-       
+       wgreen = 98;
         
         
      }
     public Unit(int r, String n) throws SlickException {
         name = n;
         setrank(r);
-          color = Color.black;
+        x=0;
+        y=0;
+        wgreen = 98;
+       
+        color = Color.black;
+        
         
      }
     
@@ -48,6 +55,12 @@ abstract public class Unit {
         if(rank ==5)rank5();
         
         
+    }
+    public void heal(){
+        health = maxhealth;
+    }
+    public void setwgreen(int width){
+        wgreen = width;
     }
     public void setrank(int r){
         rank = r;
@@ -99,6 +112,16 @@ abstract public class Unit {
     }
     public void draw(Graphics g){
         image.draw(x,y);
+         blackrect = new Rectangle(x,y-15,100,15);
+        greenrect = new Rectangle(x+1,y-14,wgreen,13);
+        redrect = new Rectangle(x+1,y-14,98,13);
+        g.setColor(Color.black);
+         g.fill(blackrect);
+         g.setColor(Color.red);
+         g.fill(redrect);
+         g.setColor(Color.green);
+         g.fill(greenrect);
+        
         g.setColor(color);
         //g.draw(hitbox);
         
@@ -131,9 +154,16 @@ abstract public class Unit {
     *   ^
         |
     */  
-   
-    
-    
+    public double calc(){
+         
+         percent = (double)health/(double)maxhealth;
+        
+         wgreen =(int) (98*percent);
+         return percent;
+    }
+    public int getwgreen(){
+     return wgreen;
+     }
    
     final public int gethealth(){
         return health;
@@ -164,6 +194,9 @@ abstract public class Unit {
     }
     final public String gettype(){
         return type;
+    }
+    final public int getmaxhealth(){
+        return maxhealth;
     }
      /* Getter Methods
     *   ^

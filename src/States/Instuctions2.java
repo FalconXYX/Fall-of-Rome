@@ -30,7 +30,7 @@ public class Instuctions2 extends BasicGameState {
         int mx = in.getMouseX();
         int my = in.getMouseY();
         if (next.function(mx, my)) {
-            sbg.enterState(4, new FadeOutTransition(), new FadeInTransition());
+            sbg.enterState(10, new FadeOutTransition(), new FadeInTransition());
         }
         
     }

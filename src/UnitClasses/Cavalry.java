@@ -43,6 +43,7 @@ public class Cavalry extends Unit {
     @Override
     public void rank1() {
         health = 130;
+        maxhealth = 130;
         armour = 5;
         atkdamage  = 15;
         upgradecost = 120;
@@ -53,7 +54,8 @@ public class Cavalry extends Unit {
 
     @Override
     public void rank2() {
-        health = 125;
+        maxhealth = 155;
+        health = maxhealth;
         armour = 8;
         atkdamage  = 20;
         upgradecost = 170;
@@ -62,7 +64,7 @@ public class Cavalry extends Unit {
 
     @Override
     public void rank3() {
-        health = 175;
+        maxhealth = 175;
         armour = 10;
         atkdamage  = 23;
         upgradecost = 210;
@@ -71,7 +73,7 @@ public class Cavalry extends Unit {
 
     @Override
     public void rank4() {
-        health = 200;
+        maxhealth = 200;
         armour = 13;
         atkdamage  = 28;
         upgradecost = 260;
@@ -80,7 +82,7 @@ public class Cavalry extends Unit {
 
     @Override
     public void rank5() {
-        health = 225;
+        maxhealth = 225;
         armour = 16;
         atkdamage  = 35;
         upgradecost = 310;

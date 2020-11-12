@@ -1,6 +1,7 @@
 
 package States;
 
+import UnitClasses.HealthBar;
 import UnitClasses.Unit;
 import java.util.ArrayList;
 import org.newdawn.slick.*;
@@ -11,6 +12,7 @@ public class Launcher extends StateBasedGame {
     public static int gold=500;
     public static boolean isinstuctions=false;
     public static ArrayList<Unit> units = new ArrayList();
+    public static ArrayList<HealthBar> heath = new ArrayList();
     public static int level = 1;
 
     public Launcher(String title) {
@@ -23,6 +25,8 @@ public class Launcher extends StateBasedGame {
         this.addState(new Shop());
         this.addState(new Instuctions2());
         this.addState(new Level1());
+        this.addState(new Level2());
+        this.addState(new LoserState());
         
        
     }

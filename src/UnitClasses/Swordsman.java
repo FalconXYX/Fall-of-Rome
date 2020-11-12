@@ -43,6 +43,7 @@ public class Swordsman extends Unit {
     @Override
     public void rank1() {
         health = 100;
+        maxhealth =100;
         armour = 3;
         atkdamage  = 15;
         upgradecost = 100;
@@ -53,7 +54,8 @@ public class Swordsman extends Unit {
 
     @Override
     public void rank2() {
-        health = 125;
+        maxhealth = 125;
+        health = maxhealth;
         armour = 5;
         atkdamage  = 20;
         upgradecost = 150;
@@ -62,7 +64,8 @@ public class Swordsman extends Unit {
 
     @Override
     public void rank3() {
-        health = 140;
+        maxhealth = 140;
+        health = maxhealth;
         armour = 7;
         atkdamage  = 23;
         upgradecost = 200;
@@ -71,7 +74,8 @@ public class Swordsman extends Unit {
 
     @Override
     public void rank4() {
-        health = 170;
+        maxhealth = 170;
+        health = maxhealth;
         armour = 10;
         atkdamage  = 28;
         upgradecost = 250;
@@ -80,7 +84,8 @@ public class Swordsman extends Unit {
 
     @Override
     public void rank5() {
-        health = 200;
+        maxhealth = 200;
+        health = maxhealth;
         armour = 14;
         atkdamage  = 35;
         upgradecost = 300;
