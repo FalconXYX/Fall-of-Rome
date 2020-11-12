@@ -30,7 +30,7 @@ public class Level2 extends BasicGameState {
         Launcher.isinstuctions = true;
         back = new Image("src/Images/HillsWithVila.png");
         goldimg = new Image("src/Images/Money.png");
-        System.out.println(Launcher.units.size());
+        
         enemyunits = new ArrayList<Unit>();
         enemyunits.add(new Spearman("n", 1));
         enemyunits.add(new Spearman("n", 1));
@@ -49,10 +49,8 @@ public class Level2 extends BasicGameState {
             }
 
         }
-        for (Unit u:Launcher.units) {
-                if(u != null){
-                u.heal();
-            }}
+        
+        
 
     }
 
@@ -144,7 +142,7 @@ public class Level2 extends BasicGameState {
                    
                }
                if (thing.get(0) != thing.get(1)) {
-                   System.out.println(thing.get(0) +"  "+ thing.get(1));
+                   
                    swap(Launcher.units.get(thing.get(0)),thing.get(0),thing.get(1),Launcher.units.get(thing.get(1)));
                    return;
                }
@@ -202,7 +200,7 @@ public class Level2 extends BasicGameState {
             }
             if(current.gettarget() <0 || current.gettarget() >4){   
                 current.settarget(original);
-                JOptionPane.showMessageDialog(null, "Invalid Move");
+                
                 return;}
         }
         if (in.isKeyDown(Input.KEY_2) && Launcher.units.get(1) != null) {
@@ -240,7 +238,7 @@ public class Level2 extends BasicGameState {
             }
             if(current.gettarget() <0 || current.gettarget() >4){   
                 current.settarget(original);
-                JOptionPane.showMessageDialog(null, "Invalid Move");
+                
                 return;}
         }
         if (in.isKeyDown(Input.KEY_3) && Launcher.units.get(2) != null) {
@@ -277,7 +275,7 @@ public class Level2 extends BasicGameState {
             }
             if(current.gettarget() <0 || current.gettarget() >4){   
                 current.settarget(original);
-                JOptionPane.showMessageDialog(null, "Invalid Move");
+                
                 return;}
         }
         if (in.isKeyDown(Input.KEY_4) && Launcher.units.get(3) != null) {
@@ -315,7 +313,7 @@ public class Level2 extends BasicGameState {
             }
             if(current.gettarget() <0 || current.gettarget() >4){   
                 current.settarget(original);
-                JOptionPane.showMessageDialog(null, "Invalid Move");
+                
                 return;}
         }
         if (in.isKeyDown(Input.KEY_5) && Launcher.units.get(4) != null) {
@@ -351,7 +349,7 @@ public class Level2 extends BasicGameState {
             }
             if(current.gettarget() <0 || current.gettarget() >4){   
                 current.settarget(original);
-                JOptionPane.showMessageDialog(null, "Invalid Move");
+                
                 return;}
         }
 
@@ -377,7 +375,7 @@ public class Level2 extends BasicGameState {
        
         if (dead==5) {
             Launcher.level++;
-            Launcher.gold+=100;
+            Launcher.gold+=150;
             for (Unit u:Launcher.units) {
                 if(u != null){
                 u.heal();
@@ -398,6 +396,14 @@ public class Level2 extends BasicGameState {
     public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException {
         timer++;
         
+        if (timer == 5) {
+            for (Unit u:Launcher.units) {
+                if(u != null){
+                    System.out.println("Healed");
+                u.heal();
+            }}
+        }
+        
         Input in = gc.getInput();
         int mx = in.getMouseX();
         int my = in.getMouseY();
@@ -416,7 +422,16 @@ public class Level2 extends BasicGameState {
     }
 
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-        
+        for (Unit u : Launcher.units) {
+            if (u != null) {
+                u.setrankimg();                
+            }
+        }
+        for (Unit u : enemyunits) {
+            if (u != null) {
+                u.setrankimg();                
+            }
+        }
         back.draw(0, 1);
         goldimg.draw(80, 13);
         g.setColor(Color.white);

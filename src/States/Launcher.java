@@ -26,7 +26,10 @@ public class Launcher extends StateBasedGame {
         this.addState(new Instuctions2());
         this.addState(new Level1());
         this.addState(new Level2());
+        this.addState(new Level3());
+         this.addState(new Level4());
         this.addState(new LoserState());
+        this.addState(new Youwon());
         
        
     }

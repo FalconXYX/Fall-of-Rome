@@ -14,7 +14,7 @@ abstract public class Unit {
     protected boolean m1rule, m2rule, m3rule;
     protected String name, type;
     protected Rectangle hitbox, blackrect, redrect, greenrect;
-    protected Image image;
+    protected Image image, rankimg;
     protected Color color;
     protected HealthBar h;
     
@@ -79,7 +79,15 @@ abstract public class Unit {
     
     
     
+    final public void setrankimg() throws SlickException{
+        if(rank ==1)rankimg = new Image("src/Images/rank1.png");
+        if(rank ==2)rankimg = new Image("src/Images/rank2.png");
+        if(rank ==3)rankimg = new Image("src/Images/rank3.png");
+        if(rank ==4)rankimg = new Image("src/Images/rank4.png");
+        if(rank ==5)rankimg = new Image("src/Images/rank5.png");
     
+    
+    }
     final public void settarget(int t){
         target = t;
     }
@@ -112,9 +120,10 @@ abstract public class Unit {
     }
     public void draw(Graphics g){
         image.draw(x,y);
-         blackrect = new Rectangle(x,y-15,100,15);
-        greenrect = new Rectangle(x+1,y-14,wgreen,13);
-        redrect = new Rectangle(x+1,y-14,98,13);
+        rankimg.draw(x+26,y+6);
+         blackrect = new Rectangle(x+28,y+5,100,15);
+        greenrect = new Rectangle(x+29,y+6,wgreen,13);
+        redrect = new Rectangle(x+29,y+6,98,13);
         g.setColor(Color.black);
          g.fill(blackrect);
          g.setColor(Color.red);

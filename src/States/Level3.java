@@ -17,30 +17,26 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.*;
 
-public class Level1 extends BasicGameState {
+public class Level3 extends BasicGameState {
 
     Input in;
     Unit enemyarcher, enemyswordsman, enemyspearman;
     ArrayList<Unit> enemyunits;
     Image goldimg, back;
     int timer;
-    error e;
+
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         timer = 0;
         Launcher.isinstuctions = true;
-        back = new Image("src/Images/Hills.png");
+        back = new Image("src/Images/Vilas.png");
         goldimg = new Image("src/Images/Money.png");
-        e= new error();
-        //TEMP|
-
-        //TEMP^
+        System.out.println(Launcher.units.size());
         enemyunits = new ArrayList<Unit>();
-        enemyunits.add(null);
-        enemyunits.add(new Swordsman("Name", 1));
-        
-        enemyunits.add(new Archer("Name", 1));
-        enemyunits.add(new Spearman("Name", 1));
-        enemyunits.add(null);
+        enemyunits.add(new Swordsman("n", 2));
+        enemyunits.add(new Catapult("n", 1));
+        enemyunits.add(new Catapult("n", 1));
+        enemyunits.add(new Catapult("n", 1));
+        enemyunits.add(new Swordsman("n", 2));
         for (Unit u : enemyunits) {
             if (u != null) {
                 u.settarget(enemyunits.indexOf(u));
@@ -53,6 +49,10 @@ public class Level1 extends BasicGameState {
             }
 
         }
+        for (Unit u:Launcher.units) {
+                if(u != null){
+                u.heal();
+            }}
 
     }
 
@@ -103,7 +103,65 @@ public class Level1 extends BasicGameState {
             
         }
     }
+    public void move(Input in) {
+       if (in.isKeyDown(Input.KEY_M) ) {
+           int countclicked = 0;
+           ArrayList<Integer> thing;
+           thing = new ArrayList();
+                   
+                   
+                   
+           boolean hit[] = new boolean[5];
+           for (int i = 0; i < 5; i++) {
+               hit[i] = false;
+           }
+           if (in.isKeyDown(Input.KEY_1)) {
+               hit[0] = true;
+               countclicked++;
+           }
+           if (in.isKeyDown(Input.KEY_2)) {
+               hit[1] = true;
+               countclicked++;
+           }
+           if (in.isKeyDown(Input.KEY_3)) {
+               hit[2] = true;
+               countclicked++;
+           }
+           if (in.isKeyDown(Input.KEY_4)) {
+               hit[3] = true;
+               countclicked++;
+           }
+           if (in.isKeyDown(Input.KEY_5)) {
+               hit[4] = true;
+               countclicked++;
+           }
+           if(countclicked == 2){
+               for (int i = 0; i < 5; i++) {
+                   if (hit[i]) {
+                       thing.add(i);
+                       
+                   }
+                   
+               }
+               if (thing.get(0) != thing.get(1)) {
+                   System.out.println(thing.get(0) +"  "+ thing.get(1));
+                   swap(Launcher.units.get(thing.get(0)),thing.get(0),thing.get(1),Launcher.units.get(thing.get(1)));
+                   return;
+               }
+                
+           }
 
+    }}
+    public void swap(Unit u,int a, int b, Unit c){
+        Unit temp1 = u;
+        Unit temp2 = c;
+        Launcher.units.set(b, u);
+        Launcher.units.set(a, c);
+        
+        
+    
+    
+    }
     public void TargetUpgrade(Input in) {
 
         Unit current = null;
@@ -143,13 +201,9 @@ public class Level1 extends BasicGameState {
                 current.settarget(Launcher.units.indexOf(current));
             }
             if(current.gettarget() <0 || current.gettarget() >4){   
-                
                 current.settarget(original);
-                if (timer%5 == 0) {
-                    
-                }
+                
                 return;}
-            
         }
         if (in.isKeyDown(Input.KEY_2) && Launcher.units.get(1) != null) {
 
@@ -220,7 +274,6 @@ public class Level1 extends BasicGameState {
             }
             if (in.isKeyDown(Input.KEY_UP)) {
                 current.settarget(Launcher.units.indexOf(current));
-                
             }
             if(current.gettarget() <0 || current.gettarget() >4){   
                 current.settarget(original);
@@ -299,11 +352,6 @@ public class Level1 extends BasicGameState {
             if(current.gettarget() <0 || current.gettarget() >4){   
                 current.settarget(original);
                 
-                try {
-                    TimeUnit.MILLISECONDS.sleep(150);
-                } catch (InterruptedException ex) {
-                    
-                }
                 return;}
         }
 
@@ -329,11 +377,11 @@ public class Level1 extends BasicGameState {
        
         if (dead==5) {
             Launcher.level++;
-            Launcher.gold+=100;
+            Launcher.gold+=200;
             for (Unit u:Launcher.units) {
                 if(u != null){
                 u.heal();
-            }if(u == null){
+            }else{
                     Launcher.units.remove(u);
                     break;
                 
@@ -345,82 +393,27 @@ public class Level1 extends BasicGameState {
         }
     
     }
-    public void move(Input in) {
-       if (in.isKeyDown(Input.KEY_M) ) {
-           int countclicked = 0;
-           ArrayList<Integer> thing;
-           thing = new ArrayList();
-                   
-                   
-                   
-           boolean hit[] = new boolean[5];
-           for (int i = 0; i < 5; i++) {
-               hit[i] = false;
-           }
-           if (in.isKeyDown(Input.KEY_1)) {
-               hit[0] = true;
-               countclicked++;
-           }
-           if (in.isKeyDown(Input.KEY_2)) {
-               hit[1] = true;
-               countclicked++;
-           }
-           if (in.isKeyDown(Input.KEY_3)) {
-               hit[2] = true;
-               countclicked++;
-           }
-           if (in.isKeyDown(Input.KEY_4)) {
-               hit[3] = true;
-               countclicked++;
-           }
-           if (in.isKeyDown(Input.KEY_5)) {
-               hit[4] = true;
-               countclicked++;
-           }
-           if(countclicked == 2){
-               for (int i = 0; i < 5; i++) {
-                   if (hit[i]) {
-                       thing.add(i);
-                       
-                   }
-                   
-               }
-               if (thing.get(0) != thing.get(1)) {
-                   System.out.println(thing.get(0) +"  "+ thing.get(1));
-                   swap(Launcher.units.get(thing.get(0)),thing.get(0),thing.get(1),Launcher.units.get(thing.get(1)));
-                   return;
-               }
-                
-           }
+    
 
-    }}
-    public void swap(Unit u,int a, int b, Unit c){
-        Unit temp1 = u;
-        Unit temp2 = c;
-        Launcher.units.set(b, u);
-        Launcher.units.set(a, c);
-        try{
-        Launcher.units.get(b).settarget(Launcher.units.indexOf(u));
-        Launcher.units.get(a).settarget(Launcher.units.indexOf(u));}
-        catch(Exception e){}
-        
-    
-    
-    }
     public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException {
         timer++;
         
-        
-        Input in = gc.getInput();
-        if (timer % 20 == 0) {
-             move(in);
-
+        if (timer == 5) {
+            for (Unit u:Launcher.units) {
+                if(u != null){
+                    System.out.println("Healed");
+                u.heal();
+            }}
         }
-       
+        Input in = gc.getInput();
         int mx = in.getMouseX();
         int my = in.getMouseY();
         TargetUpgrade(in);
         death(sbg);
+        if (timer % 20 == 0) {
+             move(in);
+
+        }
         
         if (timer % 200 == 0) {
 
@@ -430,7 +423,6 @@ public class Level1 extends BasicGameState {
     }
 
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-        e.draw(g);
         for (Unit u : Launcher.units) {
             if (u != null) {
                 u.setrankimg();                
@@ -469,7 +461,7 @@ public class Level1 extends BasicGameState {
         }
         for (Unit u : enemyunits) {
             if (u != null) {
-                
+               
                 u.calc();
             
             }}
@@ -481,7 +473,7 @@ public class Level1 extends BasicGameState {
     }
 
     public int getID() {
-        return 4;  //this id will be different for each screen
+        return 6;  //this id will be different for each screen
     }
 
 }
